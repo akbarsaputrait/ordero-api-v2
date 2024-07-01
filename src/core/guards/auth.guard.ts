@@ -97,16 +97,6 @@ function createAuthGuard(type: string | string[] = 'jwt'): Type<CanActivate> {
 
 export const AuthGuard: (type?: string | string[]) => Type<IAuthGuard> = memoize(createAuthGuard);
 
-function createOwnerAuthGuard(type: string | string[] = 'jwt-owner'): Type<CanActivate> {
-  class MixinAuthGuard extends BaseAuthGuard implements CanActivate {
-    protected type: string | string[] = type;
-  }
-
-  return mixin(MixinAuthGuard);
-}
-
-export const OwnerAuthGuard: (type?: string | string[]) => Type<IAuthGuard> = memoize(createOwnerAuthGuard);
-
 function createBasicAuthGuard(type: string | string[] = 'jwt'): Type<CanActivate> {
   class MixinAuthGuard extends BaseAuthGuard implements CanActivate {
     protected type: string | string[] = type;
@@ -135,3 +125,25 @@ function createApiGuard(type: string | string[] = 'bearer'): Type<CanActivate> {
 }
 
 export const ApiGuard: (type?: string | string[]) => Type<IAuthGuard> = memoize(createApiGuard);
+
+// Owner Guard
+function createOwnerAuthGuard(type: string | string[] = 'jwt-owner'): Type<CanActivate> {
+  class MixinAuthGuard extends BaseAuthGuard implements CanActivate {
+    protected type: string | string[] = type;
+  }
+
+  return mixin(MixinAuthGuard);
+}
+
+export const OwnerAuthGuard: (type?: string | string[]) => Type<IAuthGuard> = memoize(createOwnerAuthGuard);
+
+// Staff Guard
+function createStaffAuthGuard(type: string | string[] = 'jwt-staff'): Type<CanActivate> {
+  class MixinAuthGuard extends BaseAuthGuard implements CanActivate {
+    protected type: string | string[] = type;
+  }
+
+  return mixin(MixinAuthGuard);
+}
+
+export const StaffAuthGuard: (type?: string | string[]) => Type<IAuthGuard> = memoize(createStaffAuthGuard);

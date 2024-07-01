@@ -17,6 +17,10 @@ import { OwnerStockModule } from './app/owner/restaurant/stock/stock.module';
 import { OwnerTableModule } from './app/owner/restaurant/table/table.module';
 import { OwnerVariantModule } from './app/owner/restaurant/variant/variant.module';
 import { RestaurantModule } from './app/restaurant/restaurant.module';
+import { StaffAuthModule } from './app/staff/auth/auth.module';
+import { StaffProfileModule } from './app/staff/profile/profile.module';
+import { StaffRestaurantModule } from './app/staff/restaurant/restaurant.module';
+import { StaffModule } from './app/staff/staff.module';
 
 export const routes: Routes = [
   // { path: '/auth', module: AuthModule },
@@ -71,6 +75,50 @@ export const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: '/staff',
+    module: StaffModule,
+    children: [
+      { path: '/auth', module: StaffAuthModule },
+      { path: '/me', module: StaffProfileModule },
+      {
+        path: '/restaurants',
+        module: StaffRestaurantModule,
+        children: [
+          {
+            path: '/:restaurant_id/locations',
+            module: OwnerLocationModule,
+          },
+          {
+            path: '/:restaurant_id/tables',
+            module: OwnerTableModule,
+          },
+          {
+            path: '/:restaurant_id/staff',
+            module: OwnerStaffModule,
+          },
+          {
+            path: '/:restaurant_id/categories',
+            module: OwnerCategoryModule,
+          },
+          {
+            path: '/:restaurant_id/variants',
+            module: OwnerVariantModule,
+          },
+          {
+            path: '/:restaurant_id/products',
+            module: OwnerProductModule,
+          },
+          {
+            path: '/:restaurant_id/stocks',
+            module: OwnerStockModule,
+          },
+        ],
+      },
+    ],
+  },
+
   {
     path: '/restaurants',
     module: RestaurantModule,

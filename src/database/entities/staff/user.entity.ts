@@ -57,7 +57,7 @@ export class StaffUser extends BaseEntity {
   last_login_at: Date;
 
   @OneToOne(() => Media, (media) => media.staff_user, { eager: true })
-  media: Media;
+  image: Media;
 
   @Exclude()
   @ForeignColumn()
@@ -83,6 +83,10 @@ export class StaffUser extends BaseEntity {
 
   get isBlocked() {
     return this.status === StaffUserStatus.Blocked;
+  }
+
+  get isActive() {
+    return [StaffUserStatus.Active].includes(this.status);
   }
 
   get logName() {

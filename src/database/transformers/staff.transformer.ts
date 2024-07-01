@@ -16,17 +16,17 @@ export class StaffTransformer extends TransformerAbstract {
 
   transform(entity: StaffUser) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { media, ...rest } = entity.toJSON();
+    const { image, ...rest } = entity.toJSON();
 
     return {
       ...rest,
-      avatar: Media.getImage(entity.media),
+      avatar: Media.getImage(entity.image),
     };
   }
 
   async transformWithPermission(entity: StaffUser) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { media, ...rest } = entity.toJSON();
+    const { image, ...rest } = entity.toJSON();
 
     const grants = RequestHelper.getPermissionGrants();
     const role = await entity.role;
@@ -44,7 +44,7 @@ export class StaffTransformer extends TransformerAbstract {
             name: location.name,
           }
         : null,
-      avatar: Media.getImage(entity.media),
+      avatar: Media.getImage(entity.image),
     };
   }
 

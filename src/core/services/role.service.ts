@@ -11,18 +11,30 @@ export enum PermAct {
 }
 
 export enum PermOwner {
-  Profile = 'profile',
-  Restaurant = 'restaurant',
-  Staff = 'staff',
-  Role = 'role',
-  Location = 'location',
-  Table = 'table',
-  Category = 'category',
-  Variant = 'variant',
-  Product = 'product',
-  Stock = 'stock',
-  Order = 'order',
-  Notification = 'notification',
+  Profile = 'owner_profile',
+  Restaurant = 'owner_restaurant',
+  Staff = 'owner_staff',
+  Role = 'owner_role',
+  Location = 'owner_location',
+  Table = 'owner_table',
+  Category = 'owner_category',
+  Variant = 'owner_variant',
+  Product = 'owner_product',
+  Stock = 'owner_stock',
+  Order = 'owner_order',
+  Notification = 'owner_notification',
+}
+
+export enum PermStaff {
+  Profile = 'staff_profile',
+  Restaurant = 'staff_restaurant',
+  Role = 'staff_role',
+  Location = 'staff_location',
+  Table = 'staff_table',
+  Category = 'staff_category',
+  Variant = 'staff_variant',
+  Product = 'staff_product',
+  Stock = 'staff_stock',
 }
 
 export const DefaultPerms = [PermOwner.Profile, PermOwner.Restaurant];
@@ -49,6 +61,17 @@ export class RoleService implements IDynamicStorageRbac {
       [PermOwner.Stock]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
       [PermOwner.Order]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
       [PermOwner.Notification]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+
+      [PermStaff.Profile]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Restaurant]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      // [PermStaff.Staff]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Role]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Location]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Table]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Category]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Variant]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Product]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
+      [PermStaff.Stock]: [PermAct.R, PermAct.C, PermAct.U, PermAct.D],
     };
 
     return {

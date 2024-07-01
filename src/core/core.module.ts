@@ -13,7 +13,7 @@ import { CustomerService } from './services/customer.service';
 import { PdfService } from './services/pdf.service';
 import { RoleService } from './services/role.service';
 import { TaskService } from './services/task.service';
-import { JwtOwnerStrategy, JwtStrategy } from './services/token.service';
+import { JwtOwnerStrategy, JwtStaffStrategy, JwtStrategy } from './services/token.service';
 import { UtilService } from './services/util.service';
 
 @Global()
@@ -35,6 +35,7 @@ import { UtilService } from './services/util.service';
     PdfService,
     UtilService,
     JwtOwnerStrategy,
+    JwtStaffStrategy,
     {
       provide: DataSource,
       useFactory: async () => {
@@ -52,6 +53,7 @@ import { UtilService } from './services/util.service';
     UtilService,
     JwtStrategy,
     JwtOwnerStrategy,
+    JwtStaffStrategy,
     DataSource,
     RBAcModule,
     MulterExtendedModule,
